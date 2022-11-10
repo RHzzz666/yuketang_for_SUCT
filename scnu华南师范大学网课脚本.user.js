@@ -111,12 +111,14 @@
             if (!video) {
                 return;
             }
-            video.play();
-
             // 没有静音
             if (video.volume != 0) {
                 claim();
             }
+            
+            video.play();
+
+
             const completeness = $(
                 "#app > div.app-wrapper > div.wrap > div.viewContainer.heightAbsolutely > div > div.video-wrap > div > div > section.title > div.title-fr > div > div > span"
             );
