@@ -18,15 +18,24 @@
 
         let zk_btn = $("span.blue.ml20");
         zk_btn.click();
+        let reg = new RegExp("[2-3].[0-9]")
+        // function is_video(){
+        //     $("svg.icon > use")
+        // }
         setTimeout(function(){
             let a = $("section.leaf_list__wrap:first");
             let a_list = a.find("section.activity__wrap");
+            //let type_list = a_list.find("icon");
             for(let i=0; i<a_list.length; i++){
                 // 观看进行中与未开始的视频
                 console.log(i+'---'+a_list[i].lastChild.innerText);
                 console.log(i+'---'+a_list[i].firstChild.innerText);
                 console.log(a_list[i].firstChild.innerText.match("Video"))
-                if(a_list[i].lastChild.innerText.indexOf("进行中")>-1 || (a_list[i].lastChild.innerText == "未开始" && a_list[i].firstChild.innerText.match("Video") != null)){
+                console.log('正则数字匹配'+a_list[i].firstChild.innerText.match(/[2-3]\.[0-9]/) != null )
+                //console.log("标题为数字小于4" + Number(a_list[i].firstChild.innerText) )
+                //console.log("type的属性" + type_list[i])
+                // let type = type_list[i].children.attributes
+                if(a_list[i].lastChild.innerText.indexOf("进行中")>-1 || (a_list[i].lastChild.innerText === "未开始" && (a_list[i].firstChild.innerText.match("Video") != null || a_list[i].firstChild.innerText.match(/[2-3]\.[0-9]/) != null ))){
                     
                     a_list[i].click();
                     setTimeout(function(){
