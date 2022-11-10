@@ -16,6 +16,10 @@ https://www.tampermonkey.net/
 
 下载repository里的压缩包，解压，主要使用两个".js"文件
 
+长江雨课堂刷课for_SCUT.user.js----用于自动跳转
+
+scnu华南师范大学网课脚本.user.js----用于自动播放和静音
+
 ### 3.导入脚本
 
 点击浏览器右上角油猴Tampermonkey图标

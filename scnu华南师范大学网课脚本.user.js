@@ -115,7 +115,7 @@
             if (video.volume != 0) {
                 claim();
             }
-            
+
             video.play();
 
 
