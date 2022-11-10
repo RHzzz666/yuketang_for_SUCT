@@ -22,14 +22,7 @@
     const rate = 2;
 
     window.onload = function () {
-        // 网课页面跳转
-        function getElTooltipItemList() {
-            return document.getElementsByClassName("el-tooltip leaf-detail");
-        }
 
-        function getElTooltipList() {
-            return document.getElementsByClassName("el-tooltip f12 item");
-        }
 
         // 静音
         function claim() {
@@ -59,38 +52,6 @@
 
 
 
-        const getElementInterval = setInterval(function () {
-            const elTooltipList = getElTooltipList();
-            const elTooltipItemList = getElTooltipItemList();
-            if (elTooltipList) {
-                for (let index = 0; index < elTooltipList.length; index++) {
-                    const element = elTooltipList[index];
-                    const textContent = element.textContent;
-                    //const textContent = ''
-                    if (textContent === "未开始" || textContent === "未读") {
-                        // 判断是否是习题
-                        if(elTooltipItemList[index].innerText.indexOf('习题')!= -1){
-                            continue;
-                        }
-                        // 判断是否是作业
-                        if(elTooltipItemList[index].innerText.indexOf('作业')!= -1){
-                            continue;
-                        }
-                        // 判断是否已过学习时间
-                        if (elTooltipItemList[index].children[1].children[0].innerText.indexOf("已过") != -1) {
-                            continue;
-                        }
-                        window.clearInterval(getElementInterval);
-                        GM_setValue("rowUrl", window.location.href.toString());
-                        // 网课页面跳转
-                        elTooltipItemList[index].click();
-                        window.close();
-                        break;
-                    }
-                }
-            }
-        }, 1000);
-
         let video;
         const videoPlay = setInterval(function () {
             // 获取播放器
@@ -119,58 +80,9 @@
             video.play();
 
 
-            const completeness = $(
-                "#app > div.app-wrapper > div.wrap > div.viewContainer.heightAbsolutely > div > div.video-wrap > div > div > section.title > div.title-fr > div > div > span"
-            );
-            if (!completeness) {
-                return;
-            }
-            if (typeof completeness[0] == "undefined") {
-                return;
-            }
-            const videoText = completeness[0].innerHTML
-            if (videoText) {
-                let str = videoText.toString();
-                const succ = str.substring(4, str.length - 1);
-                const succNum = parseInt(succ);
-                if (succ >= 95) {
-                    const url = GM_getValue("rowUrl");
-                    if(url){
-                        window.clearInterval(playTimeOut);
-                        window.location.replace(url);
-                    }
-                }
-            }
+
 
         }, 1000);
 
-        // 是否为阅读类型
-        const readInterval = setInterval(function () {
-            const read = $(
-                "#app > div.app-wrapper > div.wrap > div.viewContainer.heightAbsolutely > div > div.graph-wrap > div > div > section.title > div.title-fr > div > div"
-            );
-            if(!read){
-                return
-            }
-            if (typeof read[0] == "undefined") {
-                return;
-            }
-            const readText = read[0].innerHTML
-            if(readText){
-                if(readText.toString() === '已读'){
-                    window.clearInterval(readInterval);
-                    window.location.replace(GM_getValue("rowUrl"));
-                }
-            }
-        }, 1000);
-
-        // 为了防止页面假死，定时刷新一下页面
-        setTimeout(function () {
-            // 如果保存了课程列表路径就回退的课程列表页面
-            if(GM_getValue("rowUrl")){
-                window.location.replace(GM_getValue("rowUrl"));
-            }
-            location.reload()
-        },reloadTime * 60 * 1000);
     };
 })();
