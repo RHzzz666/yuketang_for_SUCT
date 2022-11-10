@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         scnu华南师范大学网课脚本
+// @name         脚本_2
 // @namespace    http://tampermonkey.net/
 // @version      1.3
 // @description  scnu 华南师范大学 长江雨课堂 网课自动化脚本

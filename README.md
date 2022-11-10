@@ -18,7 +18,7 @@ https://www.tampermonkey.net/
 
 长江雨课堂刷课for_SCUT.user.js----用于自动跳转
 
-scnu华南师范大学网课脚本.user.js----用于自动播放和静音(偷的隔壁的)
+脚本_2.user.js----用于自动播放和静音(偷隔壁华师的)
 
 ### 3.导入脚本
 
