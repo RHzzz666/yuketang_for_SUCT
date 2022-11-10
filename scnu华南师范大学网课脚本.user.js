@@ -99,9 +99,9 @@
                 return;
             }
             setTimeout(function () {
-                // 视频开始5s之后再开启倍速
+                // 视频开始5s之后再开启倍速(已加速)
                 speed()
-            },100);
+            },10);
             claim();
             window.clearInterval(videoPlay);
         }, 500);
