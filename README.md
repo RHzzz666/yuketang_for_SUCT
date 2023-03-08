@@ -22,7 +22,7 @@ https://www.tampermonkey.net/
 
 点击浏览器右上角油猴Tampermonkey图标
 
-<img src="./img/1.png" width="500">
+<img src="./img/img_1.png" width="500">
 
 点击管理面板
 
@@ -36,6 +36,6 @@ https://www.tampermonkey.net/
 
 成功导入后进入雨课堂对应课程链接，将自动进行跳转播放
 
-再次点击油猴脚本图标会显示两个脚本正在运作
+再次点击油猴脚本图标会显示脚本正在运作
 
 <img src="./img/img.png">
