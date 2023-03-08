@@ -18,8 +18,6 @@ https://www.tampermonkey.net/
 
 长江雨课堂刷课for_SCUT.user.js----用于自动跳转
 
-脚本_2.user.js----用于自动播放和静音(偷隔壁华师的)
-
 ### 3.导入脚本
 
 点击浏览器右上角油猴Tampermonkey图标
@@ -32,7 +30,7 @@ https://www.tampermonkey.net/
 
 右上角选择实用工具
 
-在导入中选择文件进行导入，依次将两个脚本进行导入即可
+在导入中选择文件进行导入，依次脚本进行导入即可
 
 ### 4.成功后效果
 
@@ -40,5 +38,4 @@ https://www.tampermonkey.net/
 
 再次点击油猴脚本图标会显示两个脚本正在运作
 
-<img src="./img/3.png">
-
+<img src="./img/img.png">

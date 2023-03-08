@@ -2,7 +2,7 @@
 // @name         长江雨课堂for_SCUT
 // @namespace    https://www.shegou.com/
 // @version      1.0.2
-// @description  长江雨课堂for_SCUT_仅限学术论文课
+// @description  长江雨课堂for_SCUT
 // @author       RHzzz
 // @match        https://changjiang.yuketang.cn/v2/web/*
 // @icon         https://www.google.com/s2/favicons?domain=yuketang.cn
@@ -18,7 +18,6 @@
 
         let zk_btn = $("span.blue.ml20");
         zk_btn.click();
-        let reg = new RegExp("[2-3].[0-9]")
         // function is_video(){
         //     $("svg.icon > use")
         // }
@@ -48,11 +47,66 @@
                         let reg = /[0-9]+.[0-9]+/g;  // 正则匹配进度
                         setTimeout(function(){
                             let pause_btn = $("xt-bigbutton.pause_show");  // 暂停按钮
-                            if(pause_btn.length == 1){  // 判断按钮是否显示
+                            if(pause_btn.length === 1){  // 判断按钮是否显示
                                 console.log("视频未播放---自动点击播放视频");
                                 pause_btn.click();
                             }
-                        },3000);
+                        },1500);
+
+                        const rate = 2;
+                        // 静音
+                        function claim() {
+                            $(
+                                "#video-box > div > xt-wrap > xt-controls > xt-inner > xt-volumebutton > xt-icon"
+                            ).click();
+                        }
+
+                        function fun(className, selector)
+                        {
+                            var mousemove = document.createEvent("MouseEvent");
+                            mousemove.initMouseEvent("mousemove", true, true, window, 0, 10, 10, 10, 10, 0, 0, 0, 0, 0, null);
+                            document.getElementsByClassName(className)[0].dispatchEvent(mousemove);
+                            document.querySelector(selector).click();
+                        }
+
+                        // 加速
+                        function speed() {
+                            let keyt = '';
+                            if(rate === 2 || rate === 1){
+                                keyt = "[keyt='" + rate + ".00']"
+                            }else{
+                                keyt = "[keyt='" + rate + "']"
+                            }
+                            fun("xt_video_player_speed", keyt);
+                        }
+
+                        let video;
+                        const videoPlay = setInterval(function () {
+                            // 获取播放器
+                            video = document.getElementsByClassName("xt_video_player")[0];
+                            if (!video) {
+                                return;
+                            }
+                            claim();
+                            setTimeout(function () {
+                                // 视频开始5s之后再开启倍速(已加速)
+                                speed()
+                            },10);
+                            window.clearInterval(videoPlay);
+                        }, 500);
+
+                        // 是否播放完成的检测
+                        const playTimeOut = setInterval(function () {
+                            if (!video) {
+                                return;
+                            }
+                            // 没有静音
+                            if (video.volume != 0) {
+                                claim();
+                            }
+                            video.play();
+                        }, 1000);
+
 
                         // 计时器监听进度
                         let jsq = setInterval(function(){
@@ -68,7 +122,7 @@
                                 window.history.back(-1);
                                 setTimeout(function(){
                                     window.parent.location.reload();
-                                },1500);
+                                },3000);
                             }
                             //if(w.innerText=="完成度：100%"){
                                 
@@ -78,7 +132,7 @@
                     return false;
                 }
                 // 读未读的图文
-                if(a_list[i].lastChild.innerText == "未读"){
+                if(a_list[i].lastChild.innerText === "未读"){
                     console.log(i+'---'+a_list[i].lastChild.innerText);
                     a_list[i].click();
                     setTimeout(function(){
@@ -93,7 +147,7 @@
                     return false;
                 }
                 // 判断如果最后一条并且为已完成或已读 结束任务
-                if(i==a_list.length-1 && (a_list[i].lastChild.innerText == "已完成" || a_list[i].lastChild.innerText == "已读")){
+                if(i===a_list.length-1 && (a_list[i].lastChild.innerText === "已完成" || a_list[i].lastChild.innerText === "已读")){
                     // window.history.back(-1);
                     console.log("全部完成");
                     alert("已完成！");
