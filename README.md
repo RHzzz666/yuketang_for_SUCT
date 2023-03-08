@@ -1,4 +1,4 @@
-## 长江雨课堂刷课脚本（2023.03.08更新，通用支持长江雨课堂中的所有课程）
+## 长江雨课堂刷课脚本（2023.03.08更新，合并为一个脚本，通用支持长江雨课堂中的所有课程）
 
 基于以下脚本进行修改而来：
 [长江雨课堂刷课](https://greasyfork.org/zh-CN/scripts/434531-%E9%95%BF%E6%B1%9F%E9%9B%A8%E8%AF%BE%E5%A0%82%E5%88%B7%E8%AF%BE
@@ -6,6 +6,7 @@
 [scnu华南师范大学网课脚本](https://greasyfork.org/zh-CN/scripts/452433-scnu%E5%8D%8E%E5%8D%97%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%E7%BD%91%E8%AF%BE%E8%84%9A%E6%9C%AC
 )
 
+## **更新后只需要此一个脚本，请先删除以前的所有脚本**
 ### 1.安装**Tampermonkey**
 
 https://www.tampermonkey.net/
@@ -16,7 +17,7 @@ https://www.tampermonkey.net/
 
 下载repository里的压缩包，解压，主要使用两个".js"文件
 
-长江雨课堂刷课for_SCUT.user.js----用于自动跳转
+长江雨课堂刷课for_SCUT.user.js----用于自动跳转  
 
 ### 3.导入脚本
 
