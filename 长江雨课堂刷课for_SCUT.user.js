@@ -12,7 +12,8 @@
 
 (function() {
     'use strict';
-
+    const currentUrl = window.location.href;
+    console.log('url: ' + currentUrl)
     setTimeout(function(){
 
 
@@ -119,7 +120,8 @@
                             if(progress>90){
                                 console.log("视频已看完")
                                 clearInterval(jsq);
-                                window.history.back(-1);
+                                window.clearInterval(playTimeOut);
+                                window.history.back();
                                 setTimeout(function(){
                                     window.parent.location.reload();
                                 },3000);
@@ -138,7 +140,7 @@
                     setTimeout(function(){
                         let title = $("div.title-fl span")[0].innerText;
                         setTimeout(function(){
-                            window.history.back(-1);
+                            window.history.back();
                             setTimeout(function(){
                                 window.parent.location.reload();
                             },1500);
@@ -155,7 +157,14 @@
                 }
             }
         },500);
-
+        const reloadTime = 1;
+        setTimeout(function () {
+            // 如果保存了课程列表路径就回退的课程列表页面
+            if(currentUrl === window.location.href){
+                window.location.replace(currentUrl)
+                location.reload()
+            }
+        },reloadTime * 60 * 1000);
     },1000);
 
 })();
