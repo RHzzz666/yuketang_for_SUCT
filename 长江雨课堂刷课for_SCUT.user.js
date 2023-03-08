@@ -25,6 +25,7 @@
         setTimeout(function(){
             let a = $("section.leaf_list__wrap:first");
             let a_list = a.find("section.activity__wrap");
+            //let svg_list = a.find("svg.icon");
             //let type_list = a_list.find("icon");
             for(let i=0; i<a_list.length; i++){
                 // 观看进行中与未开始的视频
@@ -32,10 +33,13 @@
                 console.log(i+'---'+a_list[i].firstChild.innerText);
                 console.log(a_list[i].firstChild.innerText.match("Video"))
                 console.log('正则数字匹配'+a_list[i].firstChild.innerText.match(/[2-3]\.[0-9]/) != null )
+
+                let svg_icons = $(a_list[i]).find("svg.icon")  //包含两个icons，一个是"shipin"，另一个是"yiwancheng"
+                console.log('svg' + svg_icons[0].firstChild.getAttribute('xlink:href'))
                 //console.log("标题为数字小于4" + Number(a_list[i].firstChild.innerText) )
                 //console.log("type的属性" + type_list[i])
                 // let type = type_list[i].children.attributes
-                if(a_list[i].lastChild.innerText.indexOf("进行中")>-1 || (a_list[i].lastChild.innerText === "未开始" && (a_list[i].firstChild.innerText.match("Video") != null || a_list[i].firstChild.innerText.match(/[2-3]\.[0-9]/) != null ))){
+                if(a_list[i].lastChild.innerText.indexOf("进行中")>-1 || (a_list[i].lastChild.innerText === "未开始" && svg_icons[0].firstChild.getAttribute('xlink:href').match("#icon-shipin"))){
                     
                     a_list[i].click();
                     setTimeout(function(){
